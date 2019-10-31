@@ -1,0 +1,28 @@
+body {
+    font-size: 16px;
+    font-family: Roboto,sans-serif;
+    background: #151e33;
+    background: linear-gradient(-38deg,
+        #161e32 0,
+        #2b395a 100%);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: auto;
+
+    color: white;
+}
+
+a {
+    color: #ffbd17;
+}
+
+.prize {
+    border-color: rgb(221, 163, 3);
+}
+
+.prize img {
+    border-width: 1px;
+    border-style: ridge;
+    border-color: rgb(221, 163, 3);
+}

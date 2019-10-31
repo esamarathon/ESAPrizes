@@ -1,0 +1,21 @@
+@model Prize
+@inject SizeSelectionService Sizer
+
+<div class="prize @Sizer.GetSize(Model)">
+    <h3>
+        @Html.DisplayFor( m => m.Name )
+    </h3>
+
+    @Html.DisplayFor( m => m.Image )
+
+    @if (Model.Value != null) 
+    {
+        <div class="data">
+                Est. Value: @Html.DisplayFor( m => m.Value )
+        </div>
+    }
+
+    <p>
+        @Html.DisplayFor( m => m.Description )
+    </p>
+</div>
