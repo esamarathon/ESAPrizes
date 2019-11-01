@@ -25,4 +25,5 @@ a {
     border-width: 1px;
     border-style: ridge;
     border-color: rgb(221, 163, 3);
+    background: black;
 }
