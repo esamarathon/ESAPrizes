@@ -63,7 +63,7 @@ img {
 
 .prize.size3 {
   grid-template-columns: 6rem 1fr;
-  grid-template-rows: 2.5rem minmax(1rem,3rem) auto;
+  grid-template-rows: minmax(1rem,4rem) 1.5rem  auto;
   column-gap: 0.5rem;
   grid-template-areas: "image  title"
                        "image   data"
@@ -73,12 +73,7 @@ img {
 .prize h3 {
   grid-area: title;
   margin: 1rem 0 0 0;
-  height: 1.5rem;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 100%;
-  display: block;
-  overflow: hidden
+  max-height: 3rem;
 }
 
 .prize img {
@@ -92,7 +87,11 @@ img {
 .prize .data {
   grid-area: data;
   text-align: start;
-  margin-top: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: block;
+  overflow: hidden
 }
 
 .prize p {
