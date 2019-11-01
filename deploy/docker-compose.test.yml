@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  app:
+    image: "esamarathon/esaprizes:latest"
+    labels:
+      - caddy.address=https://prizes.esamarathon.dev
+      - caddy.targetport=80
+    networks:
+      caddy:
+networks:
+  caddy:
+    external: true
