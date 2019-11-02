@@ -15,6 +15,7 @@ namespace ESAPrizes.Controllers {
         }
 
         [HttpGet("/")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public async Task<IActionResult> Index() {
             ViewData["Title"] = "Home page";
             var prizes = await _prizes.GetPrizes();
