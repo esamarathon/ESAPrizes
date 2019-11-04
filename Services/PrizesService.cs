@@ -15,18 +15,33 @@ namespace ESAPrizes.Services {
 
         private readonly HttpClient _httpClient;
         private readonly IMemoryCache _cache;
+        private readonly bool useObjectCache;
 
         public PrizesService(IConfiguration configuration, IHttpClientFactory httpClientFactory, IMemoryCache memoryCache) {
             var siteConfig = new SiteConfig();
             configuration.Bind(siteConfig);
 
             _httpClient = httpClientFactory.CreateClient();
-            _httpClient.BaseAddress = siteConfig.TrackerUrl; //TODO move to config
+            _httpClient.BaseAddress = siteConfig.TrackerUrl;
+            _httpClient.DefaultRequestHeaders.Add("Cache-Control", "no-cache" );
             _cache = memoryCache;
+            useObjectCache = siteConfig.UseCache;
         }
 
         public async Task<IEnumerable<Prize>> GetPrizes() {
-            return await _cache.GetOrCreateAsync<IEnumerable<Prize>>("PrizeService_Prizes", FetchPrizes);    
+            if (!useObjectCache) {
+                return await FetchPrizes();
+            }
+            return await _cache.GetOrCreateAsync<IEnumerable<Prize>>("PrizeService_Prizes", FetchPrizes);   
+        }
+
+        private async Task<IEnumerable<Prize>> FetchPrizes()
+        {
+            var response = await _httpClient.GetAsync("/search/?type=prize&feed=unwon");
+            response.EnsureSuccessStatusCode();
+            var responseStream = await response.Content.ReadAsStreamAsync();
+            var prizes = await JsonSerializer.DeserializeAsync<IEnumerable<TrackerPrize>>(responseStream);
+            return prizes.Select(tp => tp.Fields).OrderByDescending(p => p.MinimumBid);
         }
 
         private async Task<IEnumerable<Prize>> FetchPrizes(ICacheEntry arg)
@@ -34,11 +49,7 @@ namespace ESAPrizes.Services {
             arg.SetAbsoluteExpiration(TimeSpan.FromMinutes(30));
             arg.SetSlidingExpiration(TimeSpan.FromMinutes(5));
 
-            var response = await _httpClient.GetAsync("/search/?type=prize&feed=unwon");
-            response.EnsureSuccessStatusCode();
-            var responseStream = await response.Content.ReadAsStreamAsync();
-            var prizes = await JsonSerializer.DeserializeAsync<IEnumerable<TrackerPrize>>(responseStream);
-            return prizes.Select(tp => tp.Fields).OrderByDescending(p => p.MinimumBid);
+            return await FetchPrizes();
         }
     }
 
