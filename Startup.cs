@@ -34,8 +34,10 @@ namespace ESAPrizes
             services.AddSingleton<SizeSelectionService>();
             services.AddSingleton<CategorizationService>();
             services.AddSingleton<PrizesService>();
-            services.AddHttpClient();
+            services.AddSingleton<CurrencyFormatterService>();
             
+            services.AddHttpClient();
+
             services.AddRazorPages();
             services.AddMvc();
         }

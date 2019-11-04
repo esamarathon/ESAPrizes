@@ -12,6 +12,7 @@ namespace ESAPrizes.Models {
         [JsonPropertyName("image")]
         public Uri Image { get; set; }
 
+        [UIHint("Dollars")]
         [JsonConverter(typeof(StringDecimalConverter))]
         [JsonPropertyName("estimatedvalue")]
         public decimal? EstimatedValue { get; set; }
@@ -22,6 +23,7 @@ namespace ESAPrizes.Models {
         [JsonPropertyName("description")]
         public string Description { get; set; }
 
+        [UIHint("Dollars")]
         [JsonConverter(typeof(StringDecimalConverter))]
         [JsonPropertyName("minimumbid")]
         public decimal? MinimumBid { get; set; }

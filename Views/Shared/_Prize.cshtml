@@ -8,12 +8,20 @@
 
     @Html.DisplayFor( m => m.Image )
 
-    @if (Model.Value != null) 
-    {
-        <div class="data">
-                Est. Value: @Html.DisplayFor( m => m.Value )
-        </div>
-    }
+
+    <div class="data">
+        @if (Model.MinimumBid != null)
+        {
+            <span>
+                Min. donation: @Html.DisplayFor( m => m.MinimumBid )
+            </span>
+        } else if (Model.EstimatedValue != null) 
+        {
+            <span>
+                Est. value: @Html.DisplayFor( m => m.EstimatedValue )
+            </span>
+        }
+    </div>
 
     <p>
         @Html.DisplayFor( m => m.Description )
