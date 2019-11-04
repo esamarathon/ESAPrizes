@@ -30,6 +30,10 @@ h1,h2,h3 {
   text-align: center;
 }
 
+h2 {
+  grid-column: span 2;
+}
+
 img {
   max-width: 100%;
 }

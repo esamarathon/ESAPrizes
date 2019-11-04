@@ -1,17 +1,21 @@
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using ESAPrizes.Models;
 using ESAPrizes.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace ESAPrizes.Controllers {
     [Route("/")]
     public class HomeController : Controller {
 
         private readonly PrizesService _prizes;
+        private readonly CategorizationService _categorizationService;
 
-        public HomeController(PrizesService prizesService) {
+        public HomeController(PrizesService prizesService, CategorizationService categorizationService) {
             _prizes = prizesService;
+            _categorizationService = categorizationService;
         }
 
         [HttpGet("/")]
@@ -19,7 +23,15 @@ namespace ESAPrizes.Controllers {
         public async Task<IActionResult> Index() {
             ViewData["Title"] = "Home page";
             var prizes = await _prizes.GetPrizes();
-            return View(prizes);
+            
+
+            var model = new HomeModel() {
+                Prizes = prizes
+                    .GroupBy(_categorizationService.GetCategory)
+                    .OrderByDescending(g => g.Key.Item1),
+            };
+
+            return View(model);
         }
 
         [HttpGet("/privacy")]

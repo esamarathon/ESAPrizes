@@ -32,6 +32,7 @@ namespace ESAPrizes
             });
 
             services.AddSingleton<SizeSelectionService>();
+            services.AddSingleton<CategorizationService>();
             services.AddSingleton<PrizesService>();
             services.AddHttpClient();
             

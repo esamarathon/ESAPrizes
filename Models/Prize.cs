@@ -14,7 +14,7 @@ namespace ESAPrizes.Models {
 
         [JsonConverter(typeof(StringDecimalConverter))]
         [JsonPropertyName("estimatedvalue")]
-        public decimal? Value { get; set; }
+        public decimal? EstimatedValue { get; set; }
 
         [JsonPropertyName("provider")]
         public string Provider { get; set; }
@@ -25,6 +25,9 @@ namespace ESAPrizes.Models {
         [JsonConverter(typeof(StringDecimalConverter))]
         [JsonPropertyName("minimumbid")]
         public decimal? MinimumBid { get; set; }
+
+        [JsonPropertyName("category__name")]
+        public string Category { get; set; }
 
         public Prize() {
             Name = "Unnamed prize";

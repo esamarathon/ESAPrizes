@@ -1,23 +1,17 @@
-﻿@model IEnumerable<Prize>
+﻿@model HomeModel
 
-@foreach (var prize in Model) {
-    <partial name="_Prize" model="prize" />
+@foreach (var category in Model.Prizes) {
+    <h2>
+        @category.Key.Item2
+    </h2>
+    @foreach (var prize in category) {
+        <partial name="_Prize" model="prize" />
+    }
 }
 
-<article>
-    <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit felis, feugiat eu turpis ut, porttitor fermentum nibh. Sed nec pellentesque quam, ut mattis metus. Morbi a euismod risus. Vivamus ut consectetur elit, ut convallis ipsum. Vestibulum tincidunt augue vel dolor vehicula, quis suscipit dolor elementum. Pellentesque id ipsum euismod, commodo sem vitae, vulputate ante. Aenean rutrum leo non sapien fermentum, at tempor nulla luctus. Proin rhoncus quis felis non tempus. Vivamus facilisis et elit in ullamcorper. Mauris nunc neque, tristique eget cursus quis, volutpat eget mauris. Donec in nunc vitae nibh rhoncus vulputate.
-    </p>
-    <p>
-    Quisque non leo a quam feugiat condimentum ut at risus. Aenean velit tortor, congue vel ultricies eget, interdum ut lacus. Vestibulum sed augue eget tellus sodales dapibus. Vestibulum eu tempor purus. Sed nunc lorem, tempus at ultrices eu, iaculis sed orci. Nunc gravida, neque a vulputate posuere, metus purus euismod velit, vel venenatis sem lorem sit amet risus. Quisque non mollis lectus, sit amet eleifend urna. Integer pellentesque tincidunt lorem, ut tristique ex elementum non. Fusce non nisl vel ex sollicitudin tristique. Morbi commodo sollicitudin leo nec feugiat. Suspendisse condimentum nulla leo, eget ornare libero pulvinar sed. Mauris bibendum et leo pharetra viverra. Donec dolor justo, egestas id iaculis id, mattis a metus.
-    </p>
-    <p>
-    Nam scelerisque sapien scelerisque leo scelerisque, quis lacinia purus auctor. Suspendisse vitae nisi a urna accumsan feugiat. Proin fringilla blandit arcu, non sagittis lorem rhoncus in. Nulla facilisi. Nunc eleifend elit ac odio rhoncus, eget tempus lorem blandit. Donec imperdiet volutpat tortor, nec tempor risus dignissim et. Morbi vitae elit vel nunc efficitur finibus sed eget arcu. Vivamus convallis turpis libero, non ornare dolor gravida ac. Sed lobortis turpis justo, eget imperdiet lacus fringilla ac. Vestibulum quis nisi commodo sapien tempus pulvinar.
-    </p>
-    <p>
-    Integer mollis ut dolor sit amet malesuada. Maecenas quis dolor blandit, euismod diam sit amet, posuere tortor. Curabitur sodales bibendum ex facilisis sodales. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut quis lacinia lectus. Integer enim diam, pretium consequat neque quis, luctus iaculis diam. Nullam sagittis eros eleifend accumsan malesuada. Aenean eros quam, lobortis nec erat placerat, auctor finibus purus. Sed vehicula molestie justo, sit amet interdum est. In a vehicula nisi. Fusce ullamcorper felis suscipit ligula aliquet dignissim eu id sapien.
-    </p>
-    <p>
-    Aenean eu nibh arcu. Sed et ex efficitur arcu rutrum semper et luctus tortor. Curabitur dignissim in mauris tincidunt egestas. Proin orci est, sodales eu nibh sit amet, ullamcorper eleifend ex. Quisque quam libero, tristique facilisis aliquet ac, maximus vitae urna. Fusce leo purus, commodo ut pretium vel, gravida non leo. Integer sed imperdiet ante, eget gravida quam. In mollis urna non arcu eleifend, in rhoncus nibh tristique. Nulla faucibus nibh vel dolor auctor, et congue leo vulputate. Phasellus interdum orci ac lectus consectetur finibus. In vestibulum mi ut maximus mollis. Phasellus sit amet neque dui. Morbi quis venenatis leo. 
-    </p>
-</article>
+@if (Model.Prizes.Count() == 0) {
+    <article>
+        Unfortunately, there are no prizes at this time.
+        Please come back later.
+    </article>
+}
