@@ -91,11 +91,14 @@ img {
 .prize .data {
   grid-area: data;
   text-align: start;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   width: 100%;
-  display: block;
-  overflow: hidden
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .prize p {
