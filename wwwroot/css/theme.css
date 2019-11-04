@@ -18,7 +18,16 @@ a {
 }
 
 .prize {
+    background: #080d1b;
     border-color: rgb(221, 163, 3);
+}
+
+.prize .data {
+    background: linear-gradient(90deg,
+        #080d1b 0,
+        rgb(57, 8, 105) 5%,
+        rgb(57, 8, 105) 95%,
+        #080d1b 100%);
 }
 
 .prize img {
