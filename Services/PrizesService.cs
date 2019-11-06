@@ -46,8 +46,8 @@ namespace ESAPrizes.Services {
 
         private async Task<IEnumerable<Prize>> FetchPrizes(ICacheEntry arg)
         {
-            arg.SetAbsoluteExpiration(TimeSpan.FromMinutes(30));
-            arg.SetSlidingExpiration(TimeSpan.FromMinutes(5));
+            arg.SetAbsoluteExpiration(TimeSpan.FromMinutes(5));
+            arg.SetSlidingExpiration(TimeSpan.FromSeconds(30));
 
             return await FetchPrizes();
         }
