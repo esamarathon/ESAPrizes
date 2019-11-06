@@ -1,0 +1,12 @@
+@model ErrorModel
+@{
+    ViewData["Title"] = "Page not found";
+}
+
+<h2>Page was not found.</h2>
+<article>
+    Unfortunately, you appear to have tried to reach a non-existing page.
+    If you think this page should exist, please contact ESA staff.
+
+    <a asp-controller="Home" asp-action="Index">Return to prize list</a>
+</article>

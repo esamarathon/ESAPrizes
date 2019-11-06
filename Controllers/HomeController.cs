@@ -34,15 +34,21 @@ namespace ESAPrizes.Controllers {
             return View(model);
         }
 
-        [HttpGet("/privacy")]
-        public IActionResult Privacy() {
-            return View();
+        [HttpGet("/error/404")]
+        public IActionResult Error404() {
+            var model = new ErrorModel() {
+                StatusCode = 404,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+            };
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        [HttpGet("/Error")]
-        public IActionResult Error() {
+        [HttpGet("/error/{code}")]
+        public IActionResult Error(int code) {
             var model = new ErrorModel() {
+                StatusCode = code,
                 RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
             };
 
