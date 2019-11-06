@@ -6,7 +6,7 @@ RUN dotnet restore
 COPY . ./
 RUN dotnet publish -c Release --no-restore -o out
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
 WORKDIR /app
 COPY --from=builder /build/out/ ./
 CMD [ "dotnet", "ESAPrizes.dll"]
