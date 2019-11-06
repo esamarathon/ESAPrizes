@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ESAPrizes.Services;
 
 namespace ESAPrizes.Utils {
     public class StringDecimalConverter : JsonConverter<decimal?>
@@ -31,10 +32,10 @@ namespace ESAPrizes.Utils {
 
         public override void Write(Utf8JsonWriter writer, decimal? value, JsonSerializerOptions serializer)
         {
-            string str = (value.GetType() == typeof(decimal) ? "$0.00" : null);
-            var dec = value as decimal?;
-            if (dec != null) {
-                str = dec.Value.ToString("C", new CultureInfo("en-US"));
+            var formatter = new CurrencyFormatterService(); // TODO figure out how to service inject this.
+            string str = (value.GetType() == typeof(decimal) ? formatter.ToDollars(0) : null);
+            if (value != null) {
+                str = formatter.ToDollars(value.Value);
             }
             writer.WriteStringValue(JsonEncodedText.Encode(str));
         }
