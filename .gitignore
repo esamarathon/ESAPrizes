@@ -231,6 +231,9 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
+# Docker-compose override files
+**/docker-compose.override.yml
+
 # Ignore appsettings environment specific configuration files
 **/appsettings.Development.json
 **/appsettings.Staging.json
