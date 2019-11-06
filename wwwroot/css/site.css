@@ -48,7 +48,7 @@ img {
 .prize.size1 {
   grid-column: span 2;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2.5rem 2rem auto;
+  grid-template-rows: fit-content(1rem) 2rem auto;
   column-gap: 0.5rem;
   grid-template-areas: "image title"
                        "image  data"
