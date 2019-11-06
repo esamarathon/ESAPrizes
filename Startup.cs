@@ -31,10 +31,10 @@ namespace ESAPrizes
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddSingleton<SizeSelectionService>();
-            services.AddSingleton<CategorizationService>();
-            services.AddSingleton<PrizesService>();
-            services.AddSingleton<CurrencyFormatterService>();
+            services.AddTransient<SizeSelectionService>();
+            services.AddTransient<CategorizationService>();
+            services.AddTransient<PrizesService>();
+            services.AddTransient<CurrencyFormatterService>();
             
             services.AddHttpClient();
 
