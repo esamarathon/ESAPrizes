@@ -230,3 +230,8 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# Ignore appsettings environment specific configuration files
+**/appsettings.Development.json
+**/appsettings.Staging.json
+**/appsettings.Production.json

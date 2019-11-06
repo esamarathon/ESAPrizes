@@ -18,15 +18,20 @@ namespace ESAPrizes
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration(config => {
-                config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddJsonFile(
-                    "appsettings.default.json", optional: true);
-                config.AddJsonFile(
-                    "appsettings.json", optional: true);
-                config.AddEnvironmentVariables("ESAPRIZES_");
-            })
+            WebHost
+                .CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((builderContext, config) => {
+                    IWebHostEnvironment env = builderContext.HostingEnvironment;
+
+                    config.SetBasePath(Directory.GetCurrentDirectory());
+                    config.AddJsonFile(
+                        "appsettings.default.json", optional: false);
+                    config.AddJsonFile(
+                        "appsettings.json", optional: true);
+                    config.AddJsonFile(
+                        $"appsettings.{env.EnvironmentName}.json", optional: true);
+                    config.AddEnvironmentVariables("ESAPRIZES_");
+                })
                 .UseStartup<Startup>();
     }
 }
