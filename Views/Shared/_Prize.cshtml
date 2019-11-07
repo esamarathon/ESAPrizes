@@ -12,14 +12,16 @@
     <div class="data">
         @if (Model.MinimumBid != null)
         {
-            <span>
-                Min. donation: @Html.DisplayFor( m => m.MinimumBid )
-            </span>
-        } else if (Model.EstimatedValue != null) 
+            <div title="Minimum donation">
+                <label>Min.&nbsp;donation:</label> @Html.DisplayFor( m => m.MinimumBid )
+            </div>
+        } 
+        
+        @if (Model.EstimatedValue != null) 
         {
-            <span>
-                Est. value: @Html.DisplayFor( m => m.EstimatedValue )
-            </span>
+            <div title="Estimated value">
+                <label>Est.&nbsp;value:</label> @Html.DisplayFor( m => m.EstimatedValue )
+            </div>
         }
     </div>
 
