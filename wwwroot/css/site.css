@@ -47,31 +47,35 @@ img {
 
 .prize.size1 {
   grid-column: span 2;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: fit-content(1rem) 2rem auto;
-  column-gap: 0.5rem;
-  grid-template-areas: "image title"
-                       "image  data"
-                       "image descr";
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(auto, 30rem) fit-content(5rem) fit-content(5rem) auto;
+  row-gap: 0.5rem;
+  grid-template-areas: "image"
+                       "title"
+                       "data"
+                       "descr";
 }
 
 .prize.size2 {
   grid-column: span 2;
-  grid-template-columns: 10rem 3fr;
-  grid-template-rows: 2.5rem 2rem auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(auto, 15rem) fit-content(5rem) fit-content(5rem) auto;
   column-gap: 0.5rem;
-  grid-template-areas: "image title"
-                       "image  data"
-                       "image descr";
+  grid-template-areas: "image"
+                       "title"
+                       "data"
+                       "descr";
 }
 
 .prize.size3 {
-  grid-template-columns: 6rem 1fr;
-  grid-template-rows: minmax(1rem,4rem) 1.5rem  auto;
+  grid-column: span 2;
+  grid-template-columns: 1fr minmax(4rem,6rem) 1fr;
+  grid-template-rows: minmax(1rem,6rem) fit-content(5rem) fit-content(10rem) auto;
   column-gap: 0.5rem;
-  grid-template-areas: "image  title"
-                       "image   data"
-                       "descr  descr";
+  grid-template-areas: "  x   image   y"
+                       "title title title"
+                       "data  data   data"
+                       "descr descr descr";
 }
 
 .prize h3 {
@@ -109,3 +113,35 @@ article {
   grid-column: span 2;
 }
 
+@media (min-width: 600px) {
+  .prize.size1 {
+    grid-column: span 2;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: fit-content(5rem) fit-content(2rem) auto;
+    column-gap: 0.5rem;
+    grid-template-areas: "image title"
+                         "image  data"
+                         "image descr";
+  }
+  
+  .prize.size2 {
+    grid-column: span 2;
+    grid-template-columns: 10rem 3fr;
+    grid-template-rows: fit-content(15rem) fit-content(5rem) fit-content(5rem) auto;
+    column-gap: 0.5rem;
+    grid-template-areas: "image title"
+                         "image  data"
+                         "image descr";
+  }
+  
+  .prize.size3 {
+    grid-column: span 1;
+    grid-template-columns: 6rem 1fr;
+    grid-template-rows: minmax(1rem,4rem) 1.5rem fit-content(10rem) auto;
+    column-gap: 0.5rem;
+    grid-template-areas: "image  title"
+                         "image   data"
+                         "  x     data"
+                         "descr  descr";
+  }
+}
