@@ -94,7 +94,6 @@ img {
 .prize .data {
   grid-area: data;
   width: 100%;
-  overflow: hidden;
 
   display: flex;
   flex-direction: row;
@@ -104,6 +103,10 @@ img {
 
   text-align: center;
   padding: 0.2rem 0 0.2rem;
+}
+
+.prize .data div {
+  margin: 0 0.5rem;
 }
 
 .prize p {
@@ -118,7 +121,7 @@ article {
   .prize.size1 {
     grid-column: span 2;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: fit-content(5rem) fit-content(2rem) auto;
+    grid-template-rows: fit-content(2rem) fit-content(2rem) auto;
     column-gap: 0.5rem;
     grid-template-areas: "image title"
                          "image  data"
@@ -144,5 +147,9 @@ article {
                          "image   data"
                          "  x     data"
                          "descr  descr";
+  }
+
+  .prize .data {
+    flex-wrap: wrap;
   }
 }
