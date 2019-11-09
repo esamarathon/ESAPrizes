@@ -1,0 +1,5 @@
+user-agent: *
+disallow: /api/
+
+user-agent:*
+disallow: /error/
