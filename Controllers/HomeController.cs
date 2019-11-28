@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ESAPrizes.Models;
 using ESAPrizes.Services;
+using ESAPrizes.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 
@@ -27,8 +28,8 @@ namespace ESAPrizes.Controllers {
 
             var model = new HomeModel() {
                 Prizes = prizes
-                    .GroupBy(_categorizationService.GetCategory)
-                    .OrderByDescending(g => g.Key.Item1),
+                    .GroupBy(_categorizationService.GetCategory, new CategoryComparer())
+                    .OrderByDescending(g => g.Key.Order),
             };
 
             return View(model);

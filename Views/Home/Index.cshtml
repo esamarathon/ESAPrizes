@@ -11,9 +11,17 @@
     }
 }
 
+@section Navigation {
+    @foreach (var category in Model.Prizes) {
+        <a href="#@IDify(category.Key.ShortName)">
+            @category.Key.ShortName
+        </a>
+    }
+}
+
 @foreach (var category in Model.Prizes) {
-    <h2 id=@IDify(category.Key.Item2)>
-        @category.Key.Item2
+    <h2 id=@IDify(category.Key.ShortName)>
+        @category.Key.Name
     </h2>
     @foreach (var prize in category) {
         <partial name="_Prize" model="prize" />
@@ -26,5 +34,3 @@
         Please come back later.
     </article>
 }
-
-<a href="#grand_prize" class="jump-button" >Back to Grand Prizes</a>
