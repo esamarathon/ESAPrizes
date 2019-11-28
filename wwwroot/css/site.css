@@ -44,6 +44,15 @@ img {
   max-width: 100%;
 }
 
+.modal {
+  position: fixed;
+  top: 1rem;
+  bottom: 1rem;
+  right: 1rem;
+  left: 1rem;
+  z-index: 100;
+  box-shadow: 0 15px 35px rgba(0,0,0,.3),0 5px 15px rgba(0,0,0,.2);
+}
 
 .jump-button {
   display: inline-block;
