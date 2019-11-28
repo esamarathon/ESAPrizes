@@ -21,7 +21,6 @@ h1, h2 {
     font-family: "Roboto Condensed", sans-serif;
     text-transform: uppercase;
     font-weight: 100;
-    text-rendering:optimizeLegibility;
 }
 
 h1::after, h2::after {
@@ -36,6 +35,17 @@ h1::after, h2::after {
 
 a {
     color: #ffbd17;
+}
+
+.jump-button {
+    background-color:#ffbd17;
+    color: #222;
+    border-radius: 2px;
+    font-weight: 700;
+}
+
+.jump-button:hover {
+    background-color: #ffe9b0;
 }
 
 .prize {

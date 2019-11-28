@@ -1,7 +1,18 @@
 ﻿@model HomeModel
 
+@functions {
+    string IDify(string category) {
+        //Replace with a Regex if you ever need to handle more characters.
+        return category
+            .ToLower()
+            .Replace(" ", "_")
+            .Replace(":", "")
+            .Replace("$", "");
+    }
+}
+
 @foreach (var category in Model.Prizes) {
-    <h2>
+    <h2 id=@IDify(category.Key.Item2)>
         @category.Key.Item2
     </h2>
     @foreach (var prize in category) {
@@ -15,3 +26,5 @@
         Please come back later.
     </article>
 }
+
+<a href="#grand_prize" class="jump-button" >Back to Grand Prizes</a>
