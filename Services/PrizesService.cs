@@ -37,7 +37,7 @@ namespace ESAPrizes.Services {
 
         private async Task<IEnumerable<Prize>> FetchPrizes()
         {
-            var response = await _httpClient.GetAsync("/search/?type=prize&feed=unwon");
+            var response = await _httpClient.GetAsync("/search/?type=prize&feed=current");
             response.EnsureSuccessStatusCode();
             var responseStream = await response.Content.ReadAsStreamAsync();
             var prizes = await JsonSerializer.DeserializeAsync<IEnumerable<TrackerPrize>>(responseStream);
