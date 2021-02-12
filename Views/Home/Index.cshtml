@@ -32,4 +32,6 @@
     </article>
 }
 
-<a href="#grand_prize" class="jump-button" >Back to Grand Prizes</a>
+@if (Model.Prizes.Any(x => x.Key.Item2 == "Grand Prize")) {
+    <a href="#grand_prize" class="jump-button" >Back to Grand Prizes</a>
+}
