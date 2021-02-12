@@ -1,7 +1,11 @@
 @model Prize
 @inject SizeSelectionService Sizer
 
-<div class="prize @Sizer.GetSize(Model)">
+@{
+    var categoryCount = @ViewData["categoryCount"] as int?;
+}
+
+<div class="prize @Sizer.GetSize(Model, categoryCount)">
     <h3>
         @Html.DisplayFor( m => m.Name )
     </h3>

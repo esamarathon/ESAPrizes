@@ -11,12 +11,17 @@
     }
 }
 
+
+
 @foreach (var category in Model.Prizes) {
     <h2 id=@IDify(category.Key.Item2)>
         @category.Key.Item2
     </h2>
     @foreach (var prize in category) {
-        <partial name="_Prize" model="prize" />
+        {
+            ViewData["categoryCount"] = category.Count();
+        }
+        <partial name="_Prize" model="prize" view-data=@ViewData />
     }
 }
 
