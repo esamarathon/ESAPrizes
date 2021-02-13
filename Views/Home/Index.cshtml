@@ -11,11 +11,17 @@
     }
 }
 
-
+@section Navigation {
+    @foreach (var category in Model.Prizes) {
+        <a href="#@IDify(category.Key.ShortName)">
+            @category.Key.ShortName
+        </a>
+    }
+}
 
 @foreach (var category in Model.Prizes) {
-    <h2 id=@IDify(category.Key.Item2)>
-        @category.Key.Item2
+    <h2 id=@IDify(category.Key.ShortName)>
+        @category.Key.Name
     </h2>
     @foreach (var prize in category) {
         {
@@ -32,6 +38,6 @@
     </article>
 }
 
-@if (Model.Prizes.Any(x => x.Key.Item2 == "Grand Prize")) {
+@if (Model.Prizes.Any(x => x.Key.Name == "Grand Prize")) {
     <a href="#grand_prize" class="jump-button" >Back to Grand Prizes</a>
 }

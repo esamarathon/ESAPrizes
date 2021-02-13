@@ -9,15 +9,21 @@
     <link rel="stylesheet" href="~/css/theme.css" />
 </head>
 <body>
-    <header>
+    <header id="top">
         <h1>
             ESA Prizes
         </h1>
+        <nav>
+            @RenderSection("Navigation", required: false)
+        </nav>
     </header>
 
     <main role="main">
         @RenderBody()
     </main>
+
+    
+    <a href="#grand_prize" class="jump-button" >Back to Top</a>
 
     <footer>
         &copy; @DateTime.Now.Year - European Speedrunner Marathon and Zephyyrr

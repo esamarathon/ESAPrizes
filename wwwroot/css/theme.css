@@ -37,14 +37,14 @@ a {
     color: #ffbd17;
 }
 
-.jump-button {
+nav a, .jump-button {
     background-color:#ffbd17;
     color: #222;
     border-radius: 2px;
     font-weight: 700;
 }
 
-.jump-button:hover {
+nav a:hover, .jump-button:hover {
     background-color: #ffe9b0;
 }
 
