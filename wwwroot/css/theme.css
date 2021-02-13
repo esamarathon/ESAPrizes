@@ -5,8 +5,8 @@ body {
     font-family: Roboto,sans-serif;
     background: #151e33;
     background: linear-gradient(-38deg,
-        #161e32 0,
-        #2b395a 100%);
+        #29252e 0,
+        #1d1a21 100%);
     background-size: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -51,7 +51,7 @@ nav a:hover, .jump-button:hover {
 .prize {
     /*background: #080d1b;
     border-color: rgb(221, 163, 3);*/
-    background: linear-gradient(-38deg,#161e32 0, #2b395a 100%);
+    background: linear-gradient(-38deg,#2d1c3a 0,#412358 100%);
     border-radius: 6px;
 }
 
